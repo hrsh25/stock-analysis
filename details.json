@@ -1,0 +1,5 @@
+{
+    "url": "https://api-v2.upstox.com/login/authorization/dialog?response_type=code&client_id=d5b31ac9-5c6b-421b-b2fd-6b738f66764d&redirect_uri=https%3A%2F%2F127.0.0.1%3A5000",
+    "token": "anbech6jzpc6vmkfaa48vi599vnxst",
+    "user": "u5wv8nafejdjp2ieihweucuqtzcnq9"
+}

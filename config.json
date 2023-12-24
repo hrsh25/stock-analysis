@@ -1,0 +1,10 @@
+{
+    "api_key": "d5b31ac9-5c6b-421b-b2fd-6b738f66764d",
+    "api_secret": "rv1s5rijas",
+    "url": "https://api.upstox.com/v2/login/authorization/dialog?response_type=code&client_id=d5b31ac9-5c6b-421b-b2fd-6b738f66764d&redirect_uri=https%3A%2F%2F127.0.0.1%3A5000",
+    "rurl": "https://127.0.0.1:5000",
+    "rurl_encoded": "https%3A%2F%2F127.0.0.1%3A5000",
+    "token": "anbech6jzpc6vmkfaa48vi599vnxst",
+    "user": "u5wv8nafejdjp2ieihweucuqtzcnq9",
+    "access_token": "eyJ0eXAiOiJKV1QiLCJrZXlfaWQiOiJza192MS4wIiwiYWxnIjoiSFMyNTYifQ.eyJzdWIiOiI2NkFQWUYiLCJqdGkiOiI2NTg1MmQ5NjY2YzlkODZkMWZiM2Q5MWUiLCJpc011bHRpQ2xpZW50IjpmYWxzZSwiaXNBY3RpdmUiOnRydWUsInNjb3BlIjpbImludGVyYWN0aXZlIiwiaGlzdG9yaWNhbCJdLCJpYXQiOjE3MDMyMjY3NzQsImlzcyI6InVkYXBpLWdhdGV3YXktc2VydmljZSIsImV4cCI6MTcwMzI4MjQwMH0.Kp7uDq-EIv5_9qRBz4ukxEzld8DWayl0-rLn9OoRnXs"
+}
