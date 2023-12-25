@@ -4,9 +4,9 @@ import urllib.parse
 import streamlit as st
 
 def generate(code):
-    # f = open('./config.json', "r+")
-    # config = json.load(f)
-    url = "https://api-v2.upstox.com/login/authorization/token"
+    f = open('./config.json', "r+")
+    config = json.load(f)
+    url = "https://api.upstox.com/v2/login/authorization/token"
     headers = {
         'accept' : 'application/json',
         'Api-Version': '2.0',
@@ -14,22 +14,19 @@ def generate(code):
     }
 
     data = {
-        'code': code,
+        'code': str(code),
         'client_id': st.secrets['api_key'],
         'client_secret': st.secrets['api_secret'],
         'redirect_uri': st.secrets['rurl'],
         'grant_type': 'authorization_code'
     }
-    st.write(headers)
-    st.write(data)
     response = requests.post(url, headers=headers, data=data)
-
+    print(response)
     json_response = response.json()
-    st.write(json_response)
     try:
-        st.secrets["access_token"] = json_response['access_token']
-        # f.seek(0)
-        # f.write(json.dumps(config, indent=4))
+        config["access_token"] = json_response['access_token']
+        f.seek(0)
+        f.write(json.dumps(config, indent=4))
         st.write("Access Token generated")
 
     except Exception as e:
@@ -63,6 +60,6 @@ def get_data():
     print(live_data)
 
 
-# code = st.text_input("Enter Code Here: ", key = "code", placeholder="code")
+# code = st.text_input("Enter Code Here: ", key = "_code", placeholder="code")
 # btn = st.button("Generate", on_click=generate, args=(code,))
 # btn2 = st.button("Load", on_click=get_data)
