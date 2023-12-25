@@ -3,10 +3,10 @@ import math
 import json
 import datetime
 
-import pytz
 import sqlite3
 import schedule
 import requests
+import pytz
 from chump import Application
 
 conn = sqlite3.connect('stock_analysis.db')
