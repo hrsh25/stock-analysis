@@ -19,12 +19,12 @@ def print_temp_msg(msg, type):
     time.sleep(2)
     temp_msg.empty() 
 
-def authenticate():
-    st.write("Go to https://api.upstox.com/v2/login/authorization/dialog?response_type=code&client_id=d5b31ac9-5c6b-421b-b2fd-6b738f66764d&redirect_uri=https%3A%2F%2F127.0.0.1%3A5000")
-    st.write("Login and a new page will open with an error. In the url, copy everything after code=")
-    st.write("Enter it here and click Generate.")
-    code = st.text_input("Enter Code Here: ", key = "code", placeholder="code")
-    st.write(code)
+# def authenticate():
+#     st.write("Go to https://api.upstox.com/v2/login/authorization/dialog?response_type=code&client_id=d5b31ac9-5c6b-421b-b2fd-6b738f66764d&redirect_uri=https%3A%2F%2F127.0.0.1%3A5000")
+#     st.write("Login and a new page will open with an error. In the url, copy everything after code=")
+#     st.write("Enter it here and click Generate.")
+#     code = st.text_input("Enter Code Here: ", key = "code", placeholder="code")
+#     st.write(code)
     # st.button("Generate", on_click=generate, args=(code,), key="generate")
 
 def refresh_data():
@@ -63,22 +63,26 @@ def run():
 
 
 st.sidebar.title("Stock Analysis")
-
+st.write("Go to https://api.upstox.com/v2/login/authorization/dialog?response_type=code&client_id=d5b31ac9-5c6b-421b-b2fd-6b738f66764d&redirect_uri=https%3A%2F%2F127.0.0.1%3A5000")
+st.write("Login and a new page will open with an error. In the url, copy everything after code=")
+st.write("Enter it here and click Generate.")
+code = st.text_input("Enter Code Here: ", key = "code", placeholder="code")
+st.button("Generate", on_click=generate, args=(code,), key="generate")
 # Sidebar buttons
-auth_button = st.sidebar.button("Authenticate", key="Auth")
+# auth_button = st.sidebar.button("Authenticate", key="Auth")
 refresh_button = st.sidebar.button("Refresh Data", key="Refresh")
 scripts_button = st.sidebar.button("Scripts", key="scripts")
 run_button = st.sidebar.button("Run", key="run")
 
-if not auth_button and not refresh_button and not scripts_button and not run_button:
+if not refresh_button and not scripts_button and not run_button:
     view_scripts()
 
-# Handle button clicks
-if auth_button:
-    st.title("Authentication")
-    authenticate()
+# # Handle button clicks
+# if auth_button:
+#     st.title("Authentication")
+#     authenticate()
 
-elif refresh_button:
+if refresh_button:
     st.title("Refresh Data")
     refresh_data()
 
