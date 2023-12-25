@@ -29,8 +29,8 @@ def generate(code):
         f.write(json.dumps(config, indent=4))
         st.write("Access Token generated")
 
-    except:
-        st.error("Error generating Access Token")
+    except Exception as e:
+        st.error(e)
     st.session_state.token = ""
 
 # rurl = urllib.parse.quote('https://127.0.0.1:5000', safe='')
@@ -60,6 +60,6 @@ def get_data():
     print(live_data)
 
 
-# code = st.text_input("Enter Code Here: ", key = "code", placeholder="code")
-# btn = st.button("Generate", on_click=generate, args=(code,))
+code = st.text_input("Enter Code Here: ", key = "code", placeholder="code")
+btn = st.button("Generate", on_click=generate, args=(code,))
 # btn2 = st.button("Load", on_click=get_data)
