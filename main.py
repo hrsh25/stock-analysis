@@ -1,14 +1,13 @@
 import time
 import math
 import json
-import requests
 import datetime
 
+import pytz
 import sqlite3
 import schedule
-
+import requests
 from chump import Application
-import pytz
 
 conn = sqlite3.connect('stock_analysis.db')
 cursor = conn.cursor()
