@@ -20,7 +20,6 @@ def generate(code):
         'redirect_uri': config['rurl'],
         'grant_type': 'authorization_code'
     }
-    st.write(data)
     response = requests.post(url, headers=headers, data=data)
     json_response = response.json()
     try:
@@ -60,6 +59,6 @@ def get_data():
     print(live_data)
 
 
-code = st.text_input("Enter Code Here: ", key = "code", placeholder="code")
-btn = st.button("Generate", on_click=generate, args=(code,))
+# code = st.text_input("Enter Code Here: ", key = "code", placeholder="code")
+# btn = st.button("Generate", on_click=generate, args=(code,))
 # btn2 = st.button("Load", on_click=get_data)

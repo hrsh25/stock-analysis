@@ -24,7 +24,8 @@ def authenticate():
     st.write("Login and a new page will open with an error. In the url, copy everything after code=")
     st.write("Enter it here and click Generate.")
     code = st.text_input("Enter Code Here: ", key = "code", placeholder="code")
-    st.button("Generate", on_click=generate, args=(code,), key="generate")
+    st.write(code)
+    # st.button("Generate", on_click=generate, args=(code,), key="generate")
 
 def refresh_data():
     delete_db()
