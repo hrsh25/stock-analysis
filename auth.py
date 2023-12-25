@@ -23,6 +23,7 @@ def generate(code):
 
     response = requests.post(url, headers=headers, data=data)
     json_response = response.json()
+    st.write(json_response)
     try:
         config["access_token"] = json_response['access_token']
         f.seek(0)
