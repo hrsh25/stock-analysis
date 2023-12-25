@@ -63,9 +63,9 @@ def run():
 
 
 st.sidebar.title("Stock Analysis")
-st.write("Go to https://api.upstox.com/v2/login/authorization/dialog?response_type=code&client_id=d5b31ac9-5c6b-421b-b2fd-6b738f66764d&redirect_uri=https%3A%2F%2F127.0.0.1%3A5000")
-st.write("Login and a new page will open with an error. In the url, copy everything after code=")
-st.write("Enter it here and click Generate.")
+st.sidebar.markdown("Go to https://api.upstox.com/v2/login/authorization/dialog?response_type=code&client_id=d5b31ac9-5c6b-421b-b2fd-6b738f66764d&redirect_uri=https%3A%2F%2F127.0.0.1%3A5000")
+st.sidebar.markdown("Login and a new page will open with an error. In the url, copy everything after code=")
+st.sidebar.markdown("Enter it here and click Generate.")
 code = st.text_input("Enter Code Here: ", key = "code", placeholder="code")
 st.button("Generate", on_click=generate, args=(code,), key="generate")
 # Sidebar buttons
