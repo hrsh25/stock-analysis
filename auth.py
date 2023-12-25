@@ -4,8 +4,8 @@ import urllib.parse
 import streamlit as st
 
 def generate(code):
-    f = open('./config.json', "r+")
-    config = json.load(f)
+    # f = open('./config.json', "r+")
+    # config = json.load(f)
     url = "https://api-v2.upstox.com/login/authorization/token"
     headers = {
         'accept' : 'application/json',
@@ -15,18 +15,18 @@ def generate(code):
 
     data = {
         'code': code,
-        'client_id': config['api_key'],
-        'client_secret': config['api_secret'],
-        'redirect_uri': config['rurl'],
+        'client_id': st.secrets['api_key'],
+        'client_secret': st.secrets['api_secret'],
+        'redirect_uri': st.secrets['rurl'],
         'grant_type': 'authorization_code'
     }
     response = requests.post(url, headers=headers, data=data)
     json_response = response.json()
     st.write(json_response)
     try:
-        config["access_token"] = json_response['access_token']
-        f.seek(0)
-        f.write(json.dumps(config, indent=4))
+        st.secrets["access_token"] = json_response['access_token']
+        # f.seek(0)
+        # f.write(json.dumps(config, indent=4))
         st.write("Access Token generated")
 
     except Exception as e:
