@@ -67,7 +67,9 @@ st.sidebar.markdown("Go to https://api.upstox.com/v2/login/authorization/dialog?
 st.sidebar.markdown("Login and a new page will open with an error. In the url, copy everything after code=")
 st.sidebar.markdown("Enter it here and click Generate.")
 code = st.sidebar.text_input("Enter Code Here: ", key = "code", placeholder="code")
-st.sidebar.button("Generate", on_click=generate, args=(code,), key="generate")
+btn = st.sidebar.button("Generate", on_click=generate, args=(code,), key="generate")
+if btn:
+    st.write("Code:", code)
 # Sidebar buttons
 # auth_button = st.sidebar.button("Authenticate", key="Auth")
 refresh_button = st.sidebar.button("Refresh Data", key="Refresh")
