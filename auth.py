@@ -20,10 +20,9 @@ def generate(code):
         'redirect_uri': config['rurl'],
         'grant_type': 'authorization_code'
     }
-
+    st.write(data)
     response = requests.post(url, headers=headers, data=data)
     json_response = response.json()
-    st.write(json_response)
     try:
         config["access_token"] = json_response['access_token']
         f.seek(0)
