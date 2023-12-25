@@ -20,6 +20,8 @@ def generate(code):
         'redirect_uri': config['rurl'],
         'grant_type': 'authorization_code'
     }
+    st.write(config)
+    st.write(data)
     response = requests.post(url, headers=headers, data=data)
     json_response = response.json()
     try:
