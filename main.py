@@ -1,9 +1,9 @@
 import time
 import math
 import json
+import sqlite3
 import datetime
 
-import sqlite3
 import schedule
 import requests
 import pytz
