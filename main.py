@@ -1,5 +1,4 @@
 import time
-import pytz
 import math
 import json
 import requests
@@ -9,6 +8,7 @@ import sqlite3
 import schedule
 
 from chump import Application
+import pytz
 
 conn = sqlite3.connect('stock_analysis.db')
 cursor = conn.cursor()

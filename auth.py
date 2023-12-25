@@ -21,7 +21,6 @@ def generate(code):
         'grant_type': 'authorization_code'
     }
     response = requests.post(url, headers=headers, data=data)
-    print(response)
     json_response = response.json()
     try:
         config["access_token"] = json_response['access_token']
