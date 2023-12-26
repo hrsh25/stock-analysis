@@ -15,9 +15,9 @@ def generate(code):
 
     data = {
         'code': str(code),
-        'client_id': st.secrets['api_key'],
-        'client_secret': st.secrets['api_secret'],
-        'redirect_uri': st.secrets['rurl'],
+        'client_id': config['api_key'],
+        'client_secret': config['api_secret'],
+        'redirect_uri': config['rurl'],
         'grant_type': 'authorization_code'
     }
     response = requests.post(url, headers=headers, data=data)
