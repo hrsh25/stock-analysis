@@ -6,7 +6,7 @@ import streamlit as st
 from auth import generate
 from insert_data import get_data
 from create_db import create
-from delete_db import delete_db
+from delete_db import delete_rows
 from manage_scripts import get_scripts, add_script, delete_script
 
 
@@ -20,7 +20,7 @@ def print_temp_msg(msg, type):
     temp_msg.empty() 
 
 def refresh_data():
-    delete_db()
+    delete_rows()
     create()
     print_temp_msg("Refreshing Data. It might take some time.", "success")
     get_data()
@@ -61,19 +61,12 @@ st.sidebar.markdown("Enter it here and click Generate.")
 code = st.sidebar.text_input("Enter Code Here: ", key = "code", placeholder="code")
 st.sidebar.button("Generate", on_click=generate, args=(code,), key="generate")
 
-# Sidebar buttons
-# auth_button = st.sidebar.button("Authenticate", key="Auth")
 refresh_button = st.sidebar.button("Refresh Data", key="Refresh")
 scripts_button = st.sidebar.button("Scripts", key="scripts")
 run_button = st.sidebar.button("Run", key="run")
 
 if not refresh_button and not scripts_button and not run_button:
     view_scripts()
-
-# # Handle button clicks
-# if auth_button:
-#     st.title("Authentication")
-#     authenticate()
 
 if refresh_button:
     st.title("Refresh Data")

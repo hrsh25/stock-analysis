@@ -5,18 +5,27 @@ def delete_db():
     cursor = conn.cursor()
 
     cursor.execute("DROP TABLE IF EXISTS scripts")
+    cursor.execute("DROP TABLE IF EXISTS historical_data_avg")
+    cursor.execute("DROP TABLE IF EXISTS alerts")
 
-    cursor.execute("DROP TABLE IF EXISTS Monday")
-    cursor.execute("DROP TABLE IF EXISTS Tuesday")
-    cursor.execute("DROP TABLE IF EXISTS Wednesday")
-    cursor.execute("DROP TABLE IF EXISTS Thursday")
-    cursor.execute("DROP TABLE IF EXISTS Friday")
+    conn.commit()
+    conn.close()
 
-    cursor.execute("DROP TABLE IF EXISTS Monday_avg")
-    cursor.execute("DROP TABLE IF EXISTS Tuesday_avg")
-    cursor.execute("DROP TABLE IF EXISTS Wednesday_avg")
-    cursor.execute("DROP TABLE IF EXISTS Thursday_avg")
-    cursor.execute("DROP TABLE IF EXISTS Friday_avg")
+def delete_rows():
+    conn = sqlite3.connect("stock_analysis.db")
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM scripts")
+    cursor.execute("DELETE FROM historical_data_avg")
+    
+    conn.commit()
+    conn.close()
+
+def delete_alerts():
+    conn = sqlite3.connect("stock_analysis.db")
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM alerts")
 
     conn.commit()
     conn.close()

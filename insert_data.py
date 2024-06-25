@@ -1,5 +1,4 @@
 import sqlite3
-import warnings
 import yfinance as yf
 from datetime import datetime, timedelta
 
@@ -9,58 +8,32 @@ def connect():
 
 def get_stock_names():
     with open('stock_names.txt', 'r') as file:
-        stock_names = file.read().splitlines()
+        stock_names = sorted(file.read().splitlines())
     return stock_names
 
 def get_start_and_end_dates():
-    start_date = datetime.now().date() - timedelta(days=58)
+    start_date = datetime.now().date() - timedelta(days=8)
     end_date = datetime.now().date()
     return start_date, end_date
 
-def insert_historical_data(cursor, days):
+def insert_historical_data(cursor):
     stock_names = get_stock_names()
     start_date, end_date = get_start_and_end_dates()
     for name in stock_names:
         cursor.execute('INSERT INTO scripts(name) VALUES (?)', (name,))
         data = yf.download(name + '.NS', start=start_date, end=end_date, interval='30m')
-        for day in days:
-            day_data = data[data.index.weekday == day]
-            with warnings.catch_warnings():
-                warnings.filterwarnings("ignore")
-                day_data['cumulative_volume'] = day_data.groupby(day_data.index.date)['Volume'].cumsum()
-
-            table_name = days[day]
-            for index, row in day_data.iterrows():
-                date = index.date().strftime('%Y-%m-%d')
-                time = index.time().strftime('%H:%M')
-                cumulative_volume = row['cumulative_volume']
-                cursor.execute(f'''
-                    INSERT INTO {table_name}
-                    VALUES (?, ?, ?, ?)
-                ''', (date, time, name, cumulative_volume))
-
-def insert_average_data(cursor, days, times):
-    for day in days.values():
-        table_name = '{}_avg'.format(day)
-        for time in times:
+        data['time'] = [index.time().strftime('%H:%M') for index, row in data.iterrows()]
+        data['Cumulative Volume'] = data['Volume'].cumsum()
+        df = data.groupby('time')['Cumulative Volume'].mean().round()
+        for index, row in df.items():
             cursor.execute(f'''
-            INSERT INTO '{table_name}' (script, time, avg_volume)
-            SELECT script, '{time}' AS time, AVG(volume) AS avg_volume
-            FROM
-                '{day}'
-            WHERE
-                time = '{time}'
-            GROUP BY
-                script
-            ''')
+                        INSERT INTO historical_data_avg
+                        VALUES (?, ?, ?)
+                    ''', (index, name, int(row)))
+        
 
 def get_data():
-    days = {0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday'}
-    times = ['09:30', '10:00', '10:30', '11:00', '11:30', '12:00', 
-            '12:30', '13:00', '13:30', '14:00', '14:30', '15:00']
-
     conn, cursor = connect()
-    insert_historical_data(cursor, days)
-    insert_average_data(cursor, days, times)
+    insert_historical_data(cursor)
     conn.commit()
     conn.close()
