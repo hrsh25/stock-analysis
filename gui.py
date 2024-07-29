@@ -54,6 +54,7 @@ def run():
     subprocess.run(["python3", "main.py"])
 
 
+create()
 st.sidebar.title("Stock Analysis")
 st.sidebar.markdown("Go to https://api.upstox.com/v2/login/authorization/dialog?response_type=code&client_id=d5b31ac9-5c6b-421b-b2fd-6b738f66764d&redirect_uri=https%3A%2F%2F127.0.0.1%3A5000")
 st.sidebar.markdown("Login and a new page will open with an error. In the url, copy everything after code=")
@@ -65,7 +66,10 @@ refresh_button = st.sidebar.button("Refresh Data", key="Refresh")
 scripts_button = st.sidebar.button("Scripts", key="scripts")
 run_button = st.sidebar.button("Run", key="run")
 
-if not refresh_button and not scripts_button and not run_button:
+add_text = st.sidebar.text_input("Enter Script Name: ", key = "add_textbox", placeholder="code")
+add_button = st.sidebar.button("Add", on_click=add_script, args=(add_text,), key="add")
+
+if not scripts_button and not run_button:
     view_scripts()
 
 if refresh_button:
@@ -80,5 +84,5 @@ elif run_button:
     st.title("Program Running")
     run()
 
-new_stock = st.sidebar.text_input("Script to add:", key="add").upper()
+new_stock = st.sidebar.text_input("Script to add:", key="add_stock").upper()
 st.sidebar.button(label="Add", on_click=add, args=(new_stock,))
