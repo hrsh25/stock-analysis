@@ -6,5 +6,10 @@
     "rurl_encoded": "https%3A%2F%2F127.0.0.1%3A5000",
     "token": "anbech6jzpc6vmkfaa48vi599vnxst",
     "user": "u5wv8nafejdjp2ieihweucuqtzcnq9",
-    "access_token": "eyJ0eXAiOiJKV1QiLCJrZXlfaWQiOiJza192MS4wIiwiYWxnIjoiSFMyNTYifQ.eyJzdWIiOiI2NkFQWUYiLCJqdGkiOiI2NmExZDAxNjEzMWE4ZTIwMzU2MmJmZDAiLCJpc011bHRpQ2xpZW50IjpmYWxzZSwiaWF0IjoxNzIxODgwNTk4LCJpc3MiOiJ1ZGFwaS1nYXRld2F5LXNlcnZpY2UiLCJleHAiOjE3MjE5NDQ4MDB9.RZbe8Y95jcG3P5-D2DJyfOKJjwwhL4hdagjLTKVe40c"
+    "login_url": "https://login.upstox.com/login/v2/oauth/authorize?redirect_uri=https://api-v2.upstox.com/login/authorization/redirect&response_type=code&client_id=IND-nyjv70u9xcg2t8e3hkrpdm5b&user_id=oabdkanHsaIPA16CaCcmzQ&user_type=individual",
+    "totp_key": "2HAZU6SIUOEMA54SOYUOZN7QA3S3J4DZ",
+    "request_url": "https://api-v2.upstox.com/login/authorization/redirect?",
+    "mobile_number": "9898198565",
+    "pin": "020598",
+    "access_token": "eyJ0eXAiOiJKV1QiLCJrZXlfaWQiOiJza192MS4wIiwiYWxnIjoiSFMyNTYifQ.eyJzdWIiOiI2NkFQWUYiLCJqdGkiOiI2NmFiMGE0NTdmODFmZjIyODYwNWZhNTIiLCJpc011bHRpQ2xpZW50IjpmYWxzZSwiaWF0IjoxNzIyNDg1MzE3LCJpc3MiOiJ1ZGFwaS1nYXRld2F5LXNlcnZpY2UiLCJleHAiOjE3MjI1NDk2MDB9.KaqTFK03wogV02TuL0_NISLGh1SquFkD2MLPwAT0xHc"
 }

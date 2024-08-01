@@ -1,6 +1,5 @@
 import json
 import requests
-import urllib.parse
 import streamlit as st
 
 def generate(code):
@@ -26,11 +25,13 @@ def generate(code):
         config["access_token"] = json_response['access_token']
         f.seek(0)
         f.write(json.dumps(config, indent=4))
-        st.write("Access Token generated")
+        print("Access Token Generated")
+        # st.write("Access Token generated")
 
     except Exception as e:
-        st.error(e)
-    st.session_state.token = ""
+        print(e)
+        # st.error(e)
+    # st.session_state.token = ""
 
 # rurl = urllib.parse.quote('https://127.0.0.1:5000', safe='')
 
